@@ -1,6 +1,7 @@
-FROM mariadb/server:latest
+FROM mariadb:latest
 
-RUN apt-get update && apt-get install -y wget && apt-get clean
+#RUN apt-get update && apt-get install -y wget && apt-get clean
 
-RUN wget http://ergast.com/downloads/f1db.sql.gz -P /docker-entrypoint-initdb.d
-RUN gunzip /docker-entrypoint-initdb.d/f1db.sql.gz
+COPY f1db.sql /docker-entrypoint-initdb.d/f1db.sql
+#RUN wget http://ergast.com/downloads/f1db.sql.gz -P /docker-entrypoint-initdb.d
+#RUN gunzip /docker-entrypoint-initdb.d/f1db.sql.gz
